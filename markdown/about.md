@@ -15,7 +15,7 @@ Users can perform three types of searches.
 The methodology for this application was as follows:
 
 1) Embed all images with `clip-ViT-B-32` using the [Sentence Transformer](https://github.com/UKPLab/sentence-transformers) library.
-2) Creat an Annoy Index of those embeddings to map similarity. Once found, results from the index are populated with links to E-Codices.
+2) Create an Annoy Index of those embeddings to map similarity. Once found, results from the index are populated with links to E-Codices.
 3) Streamlit to develop the front-end
 
 All aspects of this app were done via Python.
