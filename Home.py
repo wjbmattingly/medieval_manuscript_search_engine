@@ -6,6 +6,7 @@ import pandas as pd
 from sentence_transformers import SentenceTransformer
 import json
 import gdown
+import os
 
 def download_files():
     ann_file = "./mss_embeddings/clip_80_02k.ann"
@@ -35,7 +36,7 @@ def download_files():
 
         print("Download Complete")
 
-# download_files()
+download_files()
 
 @st.cache(allow_output_mutation=True)
 def create_model():
