@@ -1,0 +1,4 @@
+gdown
+sentence_transformers
+pandas
+annoy
