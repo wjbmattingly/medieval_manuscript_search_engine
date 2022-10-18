@@ -9,11 +9,11 @@ import gdown
 import os
 
 def download_files():
-    ann_file = "./mss_embeddings/clip_80_02k.ann"
-    ann_url = "https://drive.google.com/file/d/1zc9FN9MJi2ex1WSLKvsqv1FdUSISWori/view?usp=sharing"
+    ann_file = "./mss_embeddings/clip_final.ann"
+    ann_url = "https://drive.google.com/file/d/1Bd7MPz3N5al2PyE4dUMyI1tLBURRsi5D/view?usp=sharing"
 
-    npy_file = "./mss_embeddings/embeddings_0_80080.npy"
-    npy_url = "https://drive.google.com/file/d/1lLxxJW_WJyn5LV4odW66pyzeTdDLGMqm/view?usp=sharing"
+    npy_file = "./mss_embeddings/final.json"
+    npy_url = "https://drive.google.com/file/d/1PaqgScuZx3GbsO5msI6xy4gQa4NVFEIM/view?usp=sharing"
 
     index_file = "./mss_embeddings/index.csv"
     index_url = "https://drive.google.com/file/d/1Grdcidy3tvTaHIVf3Zll2VaOHranQEzS/view?usp=sharing"
@@ -59,7 +59,7 @@ def load_image(image_file):
 
 @st.cache(allow_output_mutation=True)
 def create_index():
-    with open(f'mss_embeddings/embeddings_0_80080.json','r', encoding="utf-8") as embedding_file:
+    with open(f'mss_embeddings/final.json','r', encoding="utf-8") as embedding_file:
         embeddings_index = json.load(embedding_file)
     return embeddings_index
 
@@ -76,7 +76,7 @@ def get_similar_images_annoy(img_index, num, mode="item", v=0, text=""):
 @st.cache(allow_output_mutation=True)
 def load_annoy_index():
     t = AnnoyIndex(512, metric="angular")
-    t.load("mss_embeddings/clip_80_02k.ann")
+    t.load("mss_embeddings/clip_final.ann")
     return t
 
 @st.cache(allow_output_mutation=True)
@@ -187,6 +187,7 @@ for images in list_of_groups:
     for image in images:
         # st.write(image)
         # st.write(index[int(image)])
+        # st.write(image)
         image_num = int(index[image])
         # st.write(image)
         row = ecodices_index.loc[ecodices_index.id == image_num]
